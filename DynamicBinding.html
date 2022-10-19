@@ -11,8 +11,8 @@
 </head>
 
 <body onload="loadIntoTable()" class="p-3 m-0 border-0 bd-example">
-    <table class="table table-primary" id="dataTable">
-        <thead class="thead-dark">
+    <table class="table table-striped-columns" id="dataTable">
+        <thead class="table-light">
             <tr>
                 <th scope="col">Date</th>
                 <th scope="col">Order ID</th>
@@ -39,49 +39,51 @@
 
         const data = await fetch(path)
 
-        const values  = await data.json();
+        const values = await data.json();
 
         console.log(values)
 
         var columnCount = values.length;
 
         console.log(columnCount)
- 
-        //Add the header row.
-        var row = table.insertRow(-1);
-        for (var i = 0; i < columnCount; i++) {
-            var headerCell = document.createElement("TH");
-            headerCell.innerHTML = values[0][i];
-            row.appendChild(headerCell);
-        }
- 
+
+
+
         //Add the data rows.
-        for (var i = 1; i < values.length; i++) {
+        for (var i = 0; i < values.length; i++) {
             row = table.insertRow(-1);
-            for (var j = 0; j < columnCount; j++) {
-                var cell = row.insertCell(-1);
-                cell.innerHTML = values[i][j];
-            }
+
+            var cell1 = row.insertCell(-1);
+            var cell2 = row.insertCell(-1);
+            var cell3 = row.insertCell(-1);
+            var cell4 = row.insertCell(-1);
+            var cell5 = row.insertCell(-1);
+            var cell6 = row.insertCell(-1);
+            cell1.innerHTML = values[i].Date;
+            cell2.innerHTML = values[i].Order_ID;
+            cell3.innerHTML = values[i].Name;
+            cell4.innerHTML = values[i].Price;
+            cell5.innerHTML = values[i].Quality;
+            cell6.innerHTML = values[i].Total;
+
         }
 
+        
 
-
-       /*  for (const row of values) {
-            var rowvalue = table.insertRow();
-            for (const bodyValue of row) {
-                var cell1 = rowvalue.insertCell(0);
-                cell1.innerHTML = bodyValue;
-             
-            }
-
-
-        } */
-
-
+        /*   
+        Mock Data Generator - URL (https://json-generator.com/)
+        [
+            {
+                "Date": '{{date(new Date(2014, 0, 1), new Date(), "YYYY-MM-dd")}}',
+                "Order_ID": '{{integer(20, 40)}}',
+              "Name": '{{firstName()}}',
+                "Price": '{{floating(1000, 4000, 2, "$0,0.00")}}',
+                "Quality": '{{integer(20, 40)}}',
+                "Total": '{{floating(1000, 4000, 2, "$0,0.00")}}'
+            },
+          ]  */
 
     }
-
-
 
 </script>
 
