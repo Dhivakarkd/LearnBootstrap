@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Bootstrap Example</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"></script>
+  </head>
+  <body>
+    <div class="container mt-3">
+      <h2>Customer Input Form</h2>
+      <form class="requires-validation" novalidate>
+        <div style="margin-top: 20px" class="row">
+          <div class="col">
+            <label for="uname" class="form-label">Prospect ID</label>
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Minimum 2 Characters required"
+              name="email"
+              required
+            />
+            <div class="invalid-feedback">Please enter an input</div>
+          </div>
+          <div class="col">
+            <label for="uname" class="form-label">Company Name</label>
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Minimum 2 Characters required"
+              name="pswd"
+              required
+            />
+            <div class="invalid-feedback">Please enter an input</div>
+          </div>
+          <div class="col">
+            <label for="uname" class="form-label">CAGID</label>
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Minimum 2 Characters required"
+              name="pswd"
+              required
+            />
+            <div class="invalid-feedback">Please enter an input</div>
+          </div>
+          <div class="col">
+            <label for="uname" class="form-label">GFPID</label>
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Minimum 2 Characters required"
+              name="pswd"
+              required
+            />
+            <div class="invalid-feedback">Please enter an input</div>
+          </div>
+        </div>
+        <div style="margin-top: 15px" class="row">
+          <div class="col">
+            <label for="uname" class="form-label">Base Number</label>
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Minimum 2 Characters required"
+              name="email"
+              required
+            />
+            <div class="invalid-feedback">Please enter an input</div>
+          </div>
+          <div class="col">
+            <label for="uname" class="form-label">GFCID</label>
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Minimum 2 Characters required"
+              name="pswd"
+              required
+            />
+            <div class="invalid-feedback">Please enter an input</div>
+          </div>
+          <div class="col">
+            <label for="uname" class="form-label">City</label>
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Minimum 2 Characters required"
+              name="pswd"
+              required
+            />
+            <div class="invalid-feedback">Please enter an input</div>
+          </div>
+          <div class="col">
+            <label for="uname" class="form-label">Local Customer ID</label>
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Minimum 2 Characters required"
+              name="pswd"
+              required
+            />
+            <div class="invalid-feedback">Please enter an input</div>
+          </div>
+        </div>
+        <div style="margin-top: 15px" class="row">
+          <div class="col">
+            <label for="uname" class="form-label">Country</label>
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Minimum 2 Characters required"
+              name="email"
+              required
+            />
+            <div class="invalid-feedback">Please enter an input</div>
+          </div>
+          <div class="col">
+            <label for="uname" class="form-label">CLU Name</label>
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Minimum 2 Characters required"
+              name="pswd"
+              required
+            />
+            <div class="invalid-feedback">Please enter an input</div>
+          </div>
+          <div class="col"></div>
+          <div class="col"></div>
+        </div>
+        <br />
+        <div class="text-center">
+          <button
+            type="button"
+            class="btn btn-outline-danger"
+            onclick="reset()"
+          >
+            Reset
+          </button>
+          <button id="submit" type="submit" class="btn btn-outline-success">
+            Submit
+          </button>
+        </div>
+      </form>
+    </div>
+  </body>
+
+  <script>
+    (function () {
+      "use strict";
+      const forms = document.querySelectorAll(".requires-validation");
+      Array.from(forms).forEach(function (form) {
+        form.addEventListener(
+          "submit",
+          function (event) {
+            if (!form.checkValidity()) {
+              event.preventDefault();
+              event.stopPropagation();
+            }
+
+            form.classList.add("was-validated");
+          },
+          false
+        );
+      });
+    })(function reset() {
+      document.getElementById("requires-validation").reset();
+    })();
+  </script>
+</html>
