@@ -169,6 +169,21 @@
       });
     })(function reset() {
       document.getElementById("requires-validation").reset();
-    })();
+      const forms = document.querySelectorAll(".requires-validation");
+      Array.from(forms).forEach(function (form) {
+        form.addEventListener(
+          "submit",
+          function (event) {
+            if (!form.checkValidity()) {
+              event.preventDefault();
+              event.stopPropagation();
+            }
+
+            form.classList.remove("was-validated");
+          },
+          false
+        );
+      });
+    })
   </script>
 </html>
