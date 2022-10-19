@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="https://getbootstrap.com/docs/5.2/assets/css/docs.css" rel="stylesheet" />
+    <title>Bootstrap Example</title>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+
+<body onload="loadIntoTable()" class="p-3 m-0 border-0 bd-example">
+    <table class="table table-primary" id="dataTable">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">Date</th>
+                <th scope="col">Order ID</th>
+                <th scope="col">Name</th>
+                <th scope="col">Price</th>
+                <th scope="col">Quality</th>
+                <th scope="col">Total</th>
+            </tr>
+        </thead>
+        <tbody>
+
+        </tbody>
+    </table>
+</body>
+<script>
+
+    async function loadIntoTable() {
+
+        var path = "./data.json";
+        var table = document.querySelector("table");
+        const tablebody = table.querySelector("tbody");
+
+        var table = document.getElementById("dataTable");
+
+        const data = await fetch(path)
+
+        const values  = await data.json();
+
+        console.log(values)
+
+        var columnCount = values.length;
+
+        console.log(columnCount)
+ 
+        //Add the header row.
+        var row = table.insertRow(-1);
+        for (var i = 0; i < columnCount; i++) {
+            var headerCell = document.createElement("TH");
+            headerCell.innerHTML = values[0][i];
+            row.appendChild(headerCell);
+        }
+ 
+        //Add the data rows.
+        for (var i = 1; i < values.length; i++) {
+            row = table.insertRow(-1);
+            for (var j = 0; j < columnCount; j++) {
+                var cell = row.insertCell(-1);
+                cell.innerHTML = values[i][j];
+            }
+        }
+
+
+
+       /*  for (const row of values) {
+            var rowvalue = table.insertRow();
+            for (const bodyValue of row) {
+                var cell1 = rowvalue.insertCell(0);
+                cell1.innerHTML = bodyValue;
+             
+            }
+
+
+        } */
+
+
+
+    }
+
+
+
+</script>
+
+</html>
