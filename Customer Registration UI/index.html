@@ -16,6 +16,12 @@
     <form>
       <div class="form-row">
         <div class="form-group">
+          <label for="customer-id">Customer ID:</label>
+          <input type="text" id="customer-id" name="customer-id" readonly>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
           <label for="customer-name">Customer Name:</label>
           <input type="text" id="customer-name" name="customer-name" maxlength="50" required>
         </div>
@@ -54,4 +60,16 @@
   
       
 </body>
+<!-- Script to update Customer ID -->
+<script>
+// Get the Customer ID input field
+const customerIdField = document.getElementById("customer-id");
+
+// Generate a random Customer ID
+const customerId = Math.floor(Math.random() * 1000000);
+
+// Set the Customer ID as the value of the input field
+customerIdField.value = customerId;
+
+</script>
 </html>
