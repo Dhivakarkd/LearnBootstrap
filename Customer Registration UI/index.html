@@ -1,19 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Customer Login</title>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans">
 
-    <link rel="stylesheet" href="./style.css">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Customer Login</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans">
+
+  <link rel="stylesheet" href="./style.css">
 </head>
+
 <body>
-  <div class="registration-form">
+  <div class="registration-form" id="complete-form">
     <h1>QVY Insurance Online</h1>
-    <h2>Customer Registration</h2>
-    <form>
+
+    <form id="registration-form">
+      <h2>Customer Registration</h2>
       <div class="form-row">
         <div class="form-group">
           <label for="customer-id">Customer ID:</label>
@@ -26,8 +29,8 @@
           <input type="text" id="customer-name" name="customer-name" maxlength="50" required>
         </div>
         <div class="form-group">
-          <label for="email">Email:</label>
-          <input type="email" id="email" name="email" required>
+          <label for="customer-email">Email:</label>
+          <input type="email" id="customer-email" name="customer-email" required>
         </div>
       </div>
       <div class="form-row">
@@ -54,22 +57,66 @@
           <input type="text" id="relationship" name="relationship" maxlength="50" required>
         </div>
       </div>
-      <button type="submit">Register</button>
+      <button type="submit" id="register-btn">Register</button>
     </form>
+
+
+    <div class="registration-success" id="registration-success" style="display: none;">
+      <h2>Customer Registration Successful</h2>
+      <ul>
+        <li><strong>Customer ID:</strong> <span id="customer-id-1"></span></li>
+        <li><strong>Customer Name:</strong> <span id="customer-name-1"></span></li>
+        <li><strong>Email:</strong> <span id="customer-email-1"></span></li>
+      </ul>
+      <button id="back-btn">Back to Login</button>
+    </div>
+
   </div>
-  
-      
+
 </body>
 <!-- Script to update Customer ID -->
 <script>
-// Get the Customer ID input field
-const customerIdField = document.getElementById("customer-id");
+  // Get the Customer ID input field
+  const customerIdField = document.getElementById("customer-id");
 
-// Generate a random Customer ID
-const customerId = Math.floor(Math.random() * 1000000);
+  // Generate a random Customer ID
+  const customerId = Math.floor(Math.random() * 1000000);
 
-// Set the Customer ID as the value of the input field
-customerIdField.value = customerId;
+  // Set the Customer ID as the value of the input field
+  customerIdField.value = customerId;
+
+  function submitForm(event) {
+  event.preventDefault();
+
+  // Get the customer details from the form fields
+  const customerId = document.getElementById("customer-id").value;
+  const customerName = document.getElementById("customer-name").value;
+  const customerEmail = document.getElementById("customer-email").value;
+
+  // Hide the registration form
+  const registrationForm = document.getElementById("registration-form");
+  registrationForm.style.display = "none";
+
+  // Show the registration success screen
+  const registrationSuccess = document.getElementById("registration-success");
+  registrationSuccess.style.display = "block";
+
+  console.log("Value of ",customerId)
+
+  // Set the customer details in the registration success screen
+  document.getElementById("customer-id-1").textContent = customerId;
+  document.getElementById("customer-name-1").textContent = customerName;
+  document.getElementById("customer-email-1").textContent = customerEmail;
+}
+
+
+document.getElementById("registration-form").addEventListener("submit", submitForm);
+
+const backBtn = document.getElementById("back-btn");
+backBtn.addEventListener("click", () => {
+  location.reload();
+});
 
 </script>
+
 </html>
