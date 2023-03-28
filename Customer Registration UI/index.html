@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer Login</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans">
+
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <div class="registration-form">
+    <h1>QVY Insurance Online</h1>
+    <h2>Customer Registration</h2>
+    <form>
+      <div class="form-row">
+        <div class="form-group">
+          <label for="customer-name">Customer Name:</label>
+          <input type="text" id="customer-name" name="customer-name" maxlength="50" required>
+        </div>
+        <div class="form-group">
+          <label for="email">Email:</label>
+          <input type="email" id="email" name="email" required>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label for="password">Password:</label>
+          <input type="password" id="password" name="password" maxlength="30" required>
+        </div>
+        <div class="form-group">
+          <label for="contact-number">Contact Number:</label>
+          <input type="tel" id="contact-number" name="contact-number" maxlength="10" required>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="address">Address:</label>
+        <textarea id="address" name="address" rows="4" maxlength="100" required></textarea>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label for="nominee-name">Nominee Name:</label>
+          <input type="text" id="nominee-name" name="nominee-name" maxlength="50" required>
+        </div>
+        <div class="form-group">
+          <label for="relationship">Relationship:</label>
+          <input type="text" id="relationship" name="relationship" maxlength="50" required>
+        </div>
+      </div>
+      <button type="submit">Register</button>
+    </form>
+  </div>
+  
+      
+</body>
+</html>
