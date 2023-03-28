@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Policy Selection</title>
+    <link href="https://fonts.googleapis.com/css?family=Poppins:400,700" rel="stylesheet">
+
+    <link rel="stylesheet" href="./Policy-selection-screen.css">
+</head>
+
+<body>
+
+    <h2>Policy Selection</h2>
+
+    <form>
+        <label for="policyType">Policy Type:</label>
+        <select id="policyType">
+            <option value="general">General Insurance</option>
+            <option value="health">Health Insurance</option>
+            <option value="motor">Motor Insurance</option>
+        </select>
+
+        <label for="policyTitle">Policy Title:</label>
+        <select id="policyTitle">
+            <!-- Options will be populated dynamically based on the policy type selected -->
+        </select>
+
+        <label for="sumAssured">Sum Assured:</label>
+        <input type="text" id="sumAssured" readonly>
+
+        <label for="premiumAmount">Premium Amount:</label>
+        <input type="text" id="premiumAmount" readonly>
+
+        <label for="policyTerm">Policy Term:</label>
+        <input type="text" id="policyTerm" readonly>
+
+        <input type="submit" value="Select Policy">
+    </form>
+
+    <script>
+        const policies = {
+            general: [
+                {
+                    title: "Property Insurance",
+                    sumAssured: "100000",
+                    premiumAmount: "5000",
+                    policyTerm: "1 year"
+                },
+                {
+                    title: "Liability Insurance",
+                    sumAssured: "50000",
+                    premiumAmount: "2500",
+                    policyTerm: "6 months"
+                }
+            ],
+            health: [
+                {
+                    title: "Medical Insurance",
+                    sumAssured: "200000",
+                    premiumAmount: "10000",
+                    policyTerm: "2 years"
+                },
+                {
+                    title: "Critical Illness Insurance",
+                    sumAssured: "50000",
+                    premiumAmount: "5000",
+                    policyTerm: "1 year"
+                }
+            ],
+            motor: [
+                {
+                    title: "Car Insurance",
+                    sumAssured: "500000",
+                    premiumAmount: "15000",
+                    policyTerm: "1 year"
+                },
+                {
+                    title: "Two Wheeler Insurance",
+                    sumAssured: "100000",
+                    premiumAmount: "3000",
+                    policyTerm: "6 months"
+                }
+            ]
+        };
+
+        const policyType = document.getElementById("policyType");
+        const policyTitle = document.getElementById("policyTitle");
+        const sumAssured = document.getElementById("sumAssured");
+        const premiumAmount = document.getElementById("premiumAmount");
+        const policyTerm = document.getElementById("policyTerm");
+
+        // Populate policy titles based on policy type selected
+        policyType.addEventListener("change", function () {
+            const selectedType = policyType.value;
+            policyTitle.innerHTML = "";
+            sumAssured.value = "";
+            premiumAmount.value = "";
+            policyTerm.value = "";
+            policies[selectedType].forEach(function (policy) {
+                const option = document.createElement("option");
+                option.text = policy.title;
+                option.value = JSON.stringify(policy);
+                policyTitle.add(option);
+            });
+        });
+
+        // Display policy details when policy title selected
+        policyTitle.addEventListener("change", function () {
+            const selectedPolicy = JSON.parse(policyTitle.value);
+            sumAssured.value = selectedPolicy.sumAssured;
+            premiumAmount.value = selectedPolicy.premiumAmount;
+            policyTerm.value = selectedPolicy.policyTerm;
+        });
+    </script>
+</body>
+
+</html>
