@@ -12,21 +12,25 @@
 
     <h2>Policy Selection</h2>
 
-    <form>
-        <label for="policyType">Policy Type:</label>
-        <select id="policyType">
-            <option value="general">General Insurance</option>
-            <option value="health">Health Insurance</option>
-            <option value="motor">Motor Insurance</option>
-        </select>
+    <form action="PolicyDetails.html">
+        <div>
+            
+            <label for="policyType">Policy Type:</label>
 
-        <label for="policyTitle">Policy Title:</label>
-        <select id="policyTitle">
-            <!-- Options will be populated dynamically based on the policy type selected -->
-        </select>
+            <select id="policyType">
+                <option value="general">General Insurance</option>
+                <option value="health">Health Insurance</option>
+                <option value="motor">Motor Insurance</option>
+            </select>
+
+            <label for="policyTitle">Policy Title:</label>
+            <select id="policyTitle">
+                <!-- Options will be populated dynamically based on the policy type selected -->
+            </select>
+        </div>
 
         <label for="sumAssured">Sum Assured:</label>
-        <input type="text" id="sumAssured" readonly>
+        <input type="text" id="sumAssured" readonly >
 
         <label for="premiumAmount">Premium Amount:</label>
         <input type="text" id="premiumAmount" readonly>
@@ -35,7 +39,9 @@
         <input type="text" id="policyTerm" readonly>
 
         <input type="submit" value="Select Policy">
+        </div>
     </form>
+
 
     <script>
         const policies = {
